@@ -1,0 +1,100 @@
+%--------------------------------------------------------------------------------------
+% region Format
+%--------------------------------------------------------------------------------------
+
+% Choose format
+\documentclass[12pt,a4paper,oneside]{report}             % Single-side
+%\documentclass[12pt,a4paper,twoside,openright]{report}  % Duplex
+
+% Initialize packages
+\input{include/packages}
+
+% Select language
+\input{include/language-setup-en}  % Settings for English document
+
+% Preamble (LaTeX settings, macros)
+\input{include/preamble}
+
+% Thesis type
+\selectmsc{}   % Master's
+
+
+%--------------------------------------------------------------------------------------
+% region Variables
+%--------------------------------------------------------------------------------------
+
+% Author
+\def\authorFamilyName{Ménes}
+\def\authorGivenName{Zsombor}
+\def\neptun{QTU3QF}
+
+% Consulent
+\def\consulentFamilyName{Katona}
+\def\consulentGivenName{Tamás}
+\def\consulentRank{software developer}
+
+% Supervisor
+\def\supervisorTitle{Dr.}
+\def\supervisorFamilyName{Stumpf}
+\def\supervisorGivenName{Péter}
+\def\supervisorRank{associate professor}
+
+% Thesis title
+\def\thesisTitle{%
+  \texorpdfstring%
+    {Embedding-based multiclass classification\\of customer data}%
+    {Embedding-based multiclass classification of customer data}%
+}
+
+% Keywords
+%TODO Fill in the keywords
+\def\keywords{}
+
+% Department
+\def\department{\bmeaut}
+
+% Változók beállítása a PDF fájlhoz [Apply variables for the PDF file]
+\applyvariables{}
+
+
+%--------------------------------------------------------------------------------------
+% region Body
+%--------------------------------------------------------------------------------------
+
+\begin{document}
+
+\selectthesislanguage{}
+\pagenumbering{gobble}
+
+% Titlepage
+\include{include/titlepage}
+
+% Project description
+%TODO Remove before printing
+\include{chapters/project}
+
+% Table of Contents
+\setcounter{tocdepth}{3}  % ToC depth
+\tableofcontents\vfill
+
+% List of Figures & Tables
+\listoffigures\addcontentsline{toc}{chapter}{\listfigurename}
+\listoftables\addcontentsline{toc}{chapter}{\listtablename}
+
+% Main part
+\cleardoublepage{}
+\pagenumbering{arabic}
+%TODO
+\include{chapters/introduction}      % Introduction
+
+% Bibliography
+\addcontentsline{toc}{chapter}{\bibname}
+{
+    \footnotesize  % Smaller font size
+    \bibliography{bib/refs}
+}
+
+% Foreign language summary
+\include{chapters/summary-foreign}
+
+\end{document}

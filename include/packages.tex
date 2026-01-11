@@ -18,17 +18,16 @@
 
 \usepackage[numbers]{natbib} % Bibliography
 
-%\usepackage{fancyhdr} % For easy to use headers and footers
+\usepackage{iftex}
 
-% thanks to http://tex.stackexchange.com/a/47579/71109
-\usepackage{ifxetex}
-\usepackage{ifluatex}
-\newif\ifxetexorluatex % a new conditional starts as false
-\ifnum 0\ifxetex 1\fi\ifluatex 1\fi>0
-   \xetexorluatextrue
-\fi
+\newif\ifxetexorluatex%
+\ifXeTeX%
+  \xetexorluatextrue%
+\else\ifLuaTeX%
+  \xetexorluatextrue%
+\fi\fi
 
-\ifxetexorluatex
+\ifxetexorluatex%
   \usepackage{fontspec}
   % Palatino clone font (Tex Gyre Pagella) for text and math
   \usepackage{newpxmath}
